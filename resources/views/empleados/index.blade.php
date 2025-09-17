@@ -7,5 +7,6 @@
 </head>
 <body>
     <h1>Lista de empleados</h1>
+    <a href="{{ route('empleados.create') }}" class="btn-crear">Crear Nuevo Empleado</a>
 </body>
 </html>
