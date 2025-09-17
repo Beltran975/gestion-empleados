@@ -4,83 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Empleados</title>
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-    <div>
+    <div class="container">
         
-        <header>
-            <div>
-               
-                <h1>Registro de empleados</h1>
-            </div>
+<header>
+    <div class="logo">
+        <div class="logo-icon">
+            <img src="{{ asset('images/engineer.png') }}" alt="Logo">
+        </div>
+        <h1>Registro de empleados</h1>
+    </div>
 
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit">Cerrar sesión</button>
-            </form>
-        </header>
+    <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+        @csrf
+        <a type="submit" class="logout-link">
+            Cerrar sesión
+</a>
+    </form>
+</header>
 
         <main>
-            <p>
+            <p class="welcome-message">
                 ¡Bienvenido a tu sistema de gestión de empleados! Aquí podrás administrar de forma sencilla y eficiente toda la información de tus trabajadores.
             </p>
 
             @if(session('success'))
-                <p>{{ session('success') }}</p>
+                <p class="alert-success">{{ session('success') }}</p>
             @endif
 
-            <div>
-                <a href="{{ route('empleados.create') }}">
-                    <button type="button">Registrar nuevo empleado</button>
-                </a>
+            <div class="employee-list">
+                <div class="employee-list-header">
+                    <div>Nombre</div>
+                    <div>Fecha de nacimiento</div>
+                    <div>CURP</div>
+                    <div>Domicilio</div>
+                    <div>Salario</div>
+                    <div>Acciones</div>
+                </div>
+
+                @forelse($empleados as $empleado)
+                    <div class="employee-row">
+                        <div>{{ $empleado->nombre }}</div>
+                        <div>{{ $empleado->fecha_nacimiento }}</div>
+                        <div>{{ $empleado->curp }}</div>
+                        <div>{{ $empleado->domicilio }}</div>
+                        <div>${{ number_format($empleado->salario, 2) }} MXN</div>
+                        <div class="actions">
+                            <a>
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a>
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                @empty
+                    <div class="empty-message">
+                        Actualmente no cuentas con ningún registro
+                    </div>
+                @endforelse
             </div>
 
-            <hr>
-
-            <div>
-                <h3>Lista de Empleados</h3>
-                
-                @if($empleados->isNotEmpty())
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Fecha de nacimiento</th>
-                                <th>CURP</th>
-                                <th>Domicilio</th>
-                                <th>Salario</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($empleados as $empleado)
-                                <tr>
-                                    <td>{{ $empleado->nombre }}</td>
-                                    <td>{{ $empleado->fecha_nacimiento }}</td>
-                                    <td>{{ $empleado->curp }}</td>
-                                    <td>{{ $empleado->domicilio }}</td>
-                                    <td>${{ number_format($empleado->salario, 2) }} MXN</td>
-                                    <td>
-                                        <a >Editar</a>
-
-                                        <form >
-                                           
-                                            <button >Eliminar</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                @else
-                    <div>
-                        <p>Actualmente no cuentas con ningún registro</p>
-                    </div>
-                @endif
+            <div class="cta-section">
+                <a href="{{ route('empleados.create') }}" class="btn-primary">Registrar nuevo empleado</a>
             </div>
         </main>
     </div>
-    
+
+    @include('empleados.create')
+
 </body>
 </html>
