@@ -75,8 +75,10 @@
                 @endforelse
             </div>
 
-            <div class="cta-section">
-                <a href="{{ route('empleados.create') }}" class="btn-primary">Registrar nuevo empleado</a>
+             <div class="cta-section">
+                <button type="button" class="btn-primary" data-modal-target="#modal-create">
+                    Registrar nuevo empleado
+                </button>
             </div>
         </main>
     </div>
