@@ -57,16 +57,16 @@
                         <div>{{ $empleado->domicilio }}</div>
                         <div>${{ number_format($empleado->salario, 2) }} MXN</div>
                         <div class="actions">
-                            <a href="{{ route('empleados.edit', $empleado->id_empleado) }}">
+                            <a href="#" class="action-btn-edit" data-modal-target="#modal-edit-{{ $empleado->id_empleado }}">
                                 <i class="fa-solid fa-pen-to-square"></i>
-                             </a>
+                            </a>
    
                             <a href="#" class="action-btn-delete" data-modal-target="#modal-delete-{{ $empleado->id_empleado }}">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                         </div>
                     </div>
-                    
+                    @include('empleados.edit', ['empleado' => $empleado])
                     @include('empleados.delete', ['empleado' => $empleado])
                 @empty
                     <div class="empty-message">
