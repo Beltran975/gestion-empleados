@@ -33,7 +33,7 @@ header {
     gap: 15px;
 }
 .logo-icon {
-    width: 60px;        /* Tamaño del círculo */
+    width: 60px;       /* Tamaño del círculo */
     height: 60px;
     border-radius: 50%; /* Hace el círculo */
     background-color: #8b2a2a; /* Color de fondo */
@@ -44,7 +44,7 @@ header {
 }
 
 .logo-icon img {
-    width: 40px;        /* Tamaño de la imagen dentro del círculo */
+    width: 40px;       /* Tamaño de la imagen dentro del círculo */
     height: 40px;
     object-fit: cover; /* Ajusta la imagen dentro del círculo */
 }
@@ -134,6 +134,7 @@ main {
 }
 
 /* --- Acciones con iconos --- */
+/* --- Acciones con iconos --- */
 .actions {
     display: flex;
     justify-content: center; /* Centra los iconos */
@@ -213,6 +214,148 @@ main {
     transform: translateY(-2px);
 }
 
+/* --- ESTILOS RESPONSIVOS PARA MÓVIL --- */
+
+@media (max-width: 768px) {
+
+    /* --- Ajustes generales para móvil --- */
+    body {
+        background-color: #f0f2f5; /* Un gris claro para el fondo general */
+    }
+
+    .container, main {
+        padding: 0 15px; /* Menos padding en los lados */
+    }
+
+    main {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    /* --- Encabezado --- */
+    header {
+        flex-direction: column; /* Apila el logo y el link de cerrar sesión */
+        gap: 10px;
+        padding: 20px 15px;
+        align-items: center;
+        
+    }
+
+    .logo h1 {
+        font-size: 1.3rem; /* Título un poco más pequeño */
+    }
+
+    .logout-link {
+        font-size: 1rem;
+    }
+    
+    .welcome-message {
+        font-size: 1rem; /* Mensaje un poco más pequeño */
+    }
+
+    /* --- Ocultamos el encabezado de la tabla de escritorio --- */
+    .employee-list-header {
+        display: none;
+    }
+
+    /* --- Transformamos las filas en tarjetas --- */
+    .employee-list {
+        background-color: transparent; /* Quitamos el fondo gris de la lista */
+        border: none;
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* Espacio entre cada tarjeta */
+    }
+
+    .employee-row {
+        display: grid;
+        /* Definimos un grid para la tarjeta:
+           Fila 1: Nombre a la izquierda, Acciones a la derecha
+           Fila 2 en adelante: Datos del empleado que ocupan todo el ancho
+        */
+        grid-template-columns: 1fr auto; /* Nombre | Acciones */
+        grid-template-rows: auto;
+        gap: 10px 15px;
+
+        /* Estilos de la tarjeta */
+        background-color: #ffffff;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        padding: 20px;
+    }
+
+    /* Posicionamos los elementos dentro del grid de la tarjeta */
+    .employee-row > div:nth-child(1) { /* Nombre */
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-align: left;
+    }
+
+    .employee-row > .actions { /* Contenedor de acciones */
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    /* Todos los demás datos */
+    .employee-row > div:not(:nth-child(1)):not(.actions) {
+        grid-column: 1 / -1; /* Ocupan todo el ancho */
+        text-align: left;
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    /* --- Agregamos las etiquetas (CURP:, Domicilio:, etc.) con CSS --- */
+    .employee-row > div::before {
+        font-weight: 500;
+        color: #333;
+        margin-right: 8px;
+    }
+    .employee-row > div:nth-child(2)::before { content: 'F. Nacimiento:'; }
+    .employee-row > div:nth-child(3)::before { content: 'CURP:'; }
+    .employee-row > div:nth-child(4)::before { content: 'Domicilio:'; }
+    .employee-row > div:nth-child(5)::before { content: 'Salario:'; }
+
+
+    /* --- Estilos para los nuevos botones de acción --- */
+    .actions {
+        gap: 10px;
+    }
+
+    .actions a, .actions button {
+        padding: 0;
+        font-size: 1rem;
+    }
+    
+    /* Damos forma y color a los íconos */
+    .actions .fa-pen-to-square, 
+    .actions .fa-trash {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .actions .fa-pen-to-square {
+        background-color: #2ecc71; /* Verde */
+    }
+
+    .actions .fa-trash {
+        background-color: #e74c3c; /* Rojo */
+    }
+
+    /* --- Botón principal de registro --- */
+    .btn-primary {
+        width: 100%; /* Ocupa todo el ancho */
+        padding: 15px;
+        font-size: 1.1rem;
+    }
+}
 
 /* --- ESTILOS PARA LA VENTANA MODAL --- */
 

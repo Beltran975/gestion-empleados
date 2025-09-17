@@ -26,7 +26,7 @@
         @csrf
         <a type="submit" class="logout-link">
             Cerrar sesión
-</a>
+        </a>
     </form>
 </header>
 
@@ -60,12 +60,12 @@
                             <a href="#" class="action-btn-edit" data-modal-target="#modal-edit-{{ $empleado->id_empleado }}">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
-   
                             <a href="#" class="action-btn-delete" data-modal-target="#modal-delete-{{ $empleado->id_empleado }}">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                         </div>
                     </div>
+                    
                     @include('empleados.edit', ['empleado' => $empleado])
                     @include('empleados.delete', ['empleado' => $empleado])
                 @empty
@@ -75,7 +75,7 @@
                 @endforelse
             </div>
 
-             <div class="cta-section">
+            <div class="cta-section">
                 <button type="button" class="btn-primary" data-modal-target="#modal-create">
                     Registrar nuevo empleado
                 </button>
@@ -122,5 +122,4 @@
         });
     </script>
 </body>
-
 </html>
