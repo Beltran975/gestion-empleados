@@ -61,9 +61,13 @@
         <i class="fa-solid fa-pen-to-square"></i>
     </a>
    
-                            <a>
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
+                            <form method="POST" action="{{ route('empleados.destroy', $empleado->id_empleado) }}" style="display:inline;">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="action-btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar a este empleado?')">
+        <i class="fa-solid fa-trash"></i>
+    </button>
+</form>
                         </div>
                     </div>
                     
