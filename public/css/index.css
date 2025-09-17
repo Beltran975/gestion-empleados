@@ -1,0 +1,384 @@
+/* --- Reset Básico y Estilos Globales --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff; /* Fondo blanco para todo */
+    color: #333;
+}
+
+/* --- Encabezado --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Añadimos padding para que el contenido no toque los bordes */
+    padding: 20px 40px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenedor */
+    padding: 0 20px; /* Padding horizontal para pantallas pequeñas */
+    width: 100%;
+    padding-top: 40px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.logo-icon {
+    width: 60px;        /* Tamaño del círculo */
+    height: 60px;
+    border-radius: 50%; /* Hace el círculo */
+    background-color: #8b2a2a; /* Color de fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Para que la imagen no sobresalga del círculo */
+}
+
+.logo-icon img {
+    width: 40px;        /* Tamaño de la imagen dentro del círculo */
+    height: 40px;
+    object-fit: cover; /* Ajusta la imagen dentro del círculo */
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+
+
+
+.logout-link {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+}
+.logout-link:hover {
+    color: #ddd;
+}
+
+/* --- Contenido Principal --- */
+main {
+    width: 100%;
+    /* Añadimos padding y definimos un ancho máximo para el contenido para que sea legible en pantallas grandes */
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenido dentro del main */
+    padding: 30px 40px;
+}
+
+.welcome-message {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* --- Tabla de empleados con fondo gris y columnas centradas --- */
+.employee-list {
+    background-color: #b9b9b9; /* Fondo gris */
+    overflow: hidden;
+    border: 1px solid #ffffff;
+    border-radius: 8px 8px 0 0;
+}
+
+.employee-list-header, .employee-row {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1.5fr 2.5fr 1fr 1.5fr;
+    gap: 15px;
+    padding: 15px 20px;
+    align-items: center;
+    text-align: center; /* Centra el contenido de las columnas */
+}
+
+.employee-list-header {
+    background-color: #8b2a2a;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.employee-row {
+    border-bottom: 3px solid #ffffff;
+}
+
+.employee-row:last-child {
+    border-bottom: none;
+}
+
+.employee-row div {
+    font-size: 0.95rem;
+}
+
+/* --- Acciones con iconos --- */
+.actions {
+    display: flex;
+    justify-content: center; /* Centra los iconos */
+    align-items: center;
+    gap: 15px;
+}
+
+/* Estilos base para los contenedores de los iconos */
+.actions a, .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1; /* Asegura que no haya espacio extra */
+}
+
+/* Damos forma y color a los íconos individuales */
+.actions .fa-pen-to-square, 
+.actions .fa-trash {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem; /* Ajustamos el tamaño del icono dentro del cuadro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.actions .fa-pen-to-square {
+    background-color: #2ecc71; /* Verde */
+}
+
+.actions .fa-trash {
+    background-color: #e74c3c; /* Rojo */
+}
+
+/* Efecto hover para oscurecer los fondos */
+.actions .fa-pen-to-square:hover {
+    background-color: #27ae60; /* Verde oscuro */
+}
+
+.actions .fa-trash:hover {
+    background-color: #c0392b; /* Rojo oscuro */
+}
+
+
+/* --- Mensaje de Lista Vacía y Botón CTA --- */
+.empty-message {
+    text-align: center;
+    padding: 60px 20px;
+    color: #888;
+    font-size: 1.1rem;
+    background-color: white;
+}
+
+.cta-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #8b2a2a;
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #6e1f1f;
+    transform: translateY(-2px);
+}
+
+
+/* --- ESTILOS PARA LA VENTANA MODAL --- */
+
+/* Fondo oscuro que cubre toda la pantalla */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none; /* Oculto por defecto */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+/* Contenedor de la ventana modal */
+.modal {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Animación para aparecer */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Estilos para el formulario dentro del modal */
+.modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal .form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.modal .form-group input {
+    font-family: 'Poppins', sans-serif;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #6c757d; /* Fondo gris oscuro */
+    color: #ffffff; /* Texto blanco */
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.modal .form-group input::placeholder {
+    color: #bdbdbd;
+}
+
+.modal .form-group input:focus {
+    border-color: #8b2a2a;
+}
+
+/* Contenedor de los botones */
+.modal .btn-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.modal .btn {
+    flex: 1; /* Ocupan el mismo espacio */
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.modal .btn:hover {
+    transform: translateY(-2px);
+}
+
+.modal .btn-save {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+.modal .btn-save:hover {
+    background-color: #218838;
+}
+
+.modal .btn-cancel {
+    background-color: #dc3545; /* Rojo */
+    color: white;
+}
+.modal .btn-cancel:hover {
+    background-color: #c82333;
+}
+
+
+/* --- ESTILOS PARA MODAL DE CONFIRMACIÓN DE ELIMINACIÓN --- */
+
+.modal-confirm {
+    max-width: 400px; /* Un poco más pequeño que el de edición */
+    text-align: center;
+}
+
+.modal-confirm p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.modal-confirm p strong {
+    color: #8b2a2a; /* Resalta el nombre del empleado */
+    font-weight: 700;
+}
+
+.modal-confirm .btn-group {
+    justify-content: center;
+}
+
+.modal-confirm .btn-delete-confirm {
+    background-color: #8b2a2a; /* Rojo oscuro del tema */
+    color: white;
+}
+.modal-confirm .btn-delete-confirm:hover {
+    background-color: #6e1f1f;
+}
+
+/* Reutilizamos el estilo del botón de cancelar */
+.modal-confirm .btn-cancel {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+.modal-confirm .btn-cancel:hover {
+    background-color: #218838;
+}
+
+/* Pequeño ajuste para el botón de eliminar dentro del formulario */
+.modal-confirm form {
+    display: inline;
+}
+
+.modal-confirm .btn {
+    flex: none; /* Quitamos el flex: 1 */
+    padding: 10px 25px;
+}
