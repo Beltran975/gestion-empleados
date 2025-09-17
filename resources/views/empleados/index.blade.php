@@ -57,9 +57,10 @@
                         <div>{{ $empleado->domicilio }}</div>
                         <div>${{ number_format($empleado->salario, 2) }} MXN</div>
                         <div class="actions">
-                            <a>
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
+                            <a href="{{ route('empleados.edit', $empleado->id_empleado) }}">
+        <i class="fa-solid fa-pen-to-square"></i>
+    </a>
+   
                             <a>
                                 <i class="fa-solid fa-trash"></i>
                             </a>
