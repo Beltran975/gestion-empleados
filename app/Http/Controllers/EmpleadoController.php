@@ -66,4 +66,17 @@ class EmpleadoController extends Controller
         return redirect()->route('empleados.index')->with('success', 'Empleado actualizado correctamente.');
     }
 
+    public function destroy(Empleado $empleado)
+    {
+        $empleado->delete();
+
+        Log::create([
+            'id_usuario' => session('usuario_id'),
+            'accion' => 'eliminar',
+            'tabla_afectada' => 'empleados',
+        ]);
+
+        return redirect()->route('empleados.index')->with('success', 'Empleado eliminado correctamente.');
+    }
+
 }
