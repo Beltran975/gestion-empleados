@@ -10,7 +10,8 @@ class EmpleadoController extends Controller
 {
     public function index()
     {
-        return view('empleados.index');
+        $empleados = Empleado::all();
+        return view('empleados.index', compact('empleados'));
     }
 
     public function create()
