@@ -22,12 +22,12 @@
         <h1>Registro de empleados</h1>
     </div>
 
-    <form method="POST" action="{{ route('logout') }}" style="display:inline;">
-        @csrf
-        <a type="submit" class="logout-link">
-            Cerrar sesión
-        </a>
-    </form>
+    <form method="POST" action="{{ route('logout') }}" style="display:inline;" id="logout-form">
+    @csrf
+    <button type="submit" class="logout-link">
+        Cerrar sesión
+    </button>
+</form>
 </header>
 
         <main>
