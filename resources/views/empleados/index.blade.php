@@ -58,19 +58,16 @@
                         <div>${{ number_format($empleado->salario, 2) }} MXN</div>
                         <div class="actions">
                             <a href="{{ route('empleados.edit', $empleado->id_empleado) }}">
-        <i class="fa-solid fa-pen-to-square"></i>
-    </a>
+                                <i class="fa-solid fa-pen-to-square"></i>
+                             </a>
    
-                            <form method="POST" action="{{ route('empleados.destroy', $empleado->id_empleado) }}" style="display:inline;">
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="action-btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar a este empleado?')">
-        <i class="fa-solid fa-trash"></i>
-    </button>
-</form>
+                            <a href="#" class="action-btn-delete" data-modal-target="#modal-delete-{{ $empleado->id_empleado }}">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
                         </div>
                     </div>
                     
+                    @include('empleados.delete', ['empleado' => $empleado])
                 @empty
                     <div class="empty-message">
                         Actualmente no cuentas con ningún registro
@@ -85,6 +82,43 @@
     </div>
 
     @include('empleados.create')
-
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modalTriggers = document.querySelectorAll('[data-modal-target]');
+            const modalCloses = document.querySelectorAll('[data-modal-close]');
+            const openModal = (modal) => {
+                if (modal) {
+                    modal.style.display = 'flex';
+                }
+            };
+            const closeModal = (modal) => {
+                if (modal) {
+                    modal.style.display = 'none';
+                }
+            };
+            modalTriggers.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const modalId = button.getAttribute('data-modal-target');
+                    const modal = document.querySelector(modalId);
+                    openModal(modal);
+                });
+            });
+            modalCloses.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal-overlay');
+                    closeModal(modal);
+                });
+            });
+            document.querySelectorAll('.modal-overlay').forEach(overlay => {
+                overlay.addEventListener('click', (event) => {
+                    if (event.target === overlay) {
+                        closeModal(overlay);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
