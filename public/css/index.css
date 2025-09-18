@@ -28,7 +28,7 @@ header {
     padding-top: 40px;
 }
 .logo {
-    display: flex;
+    padding-left: 20px;
     align-items: center;
     gap: 15px;
 }

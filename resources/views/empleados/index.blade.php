@@ -24,10 +24,11 @@
 
     <form method="POST" action="{{ route('logout') }}" style="display:inline;" id="logout-form">
     @csrf
-    <button type="submit" class="logout-link">
+    <button type="button" class="logout-link" onclick="logoutAllTabs()">
         Cerrar sesión
     </button>
 </form>
+
 </header>
 
         <main>
@@ -121,5 +122,31 @@
             });
         });
     </script>
+    <script>
+    /**
+     * Cierra sesión en esta pestaña y avisa al resto
+     */
+    function logoutAllTabs() {
+        // Marca en localStorage (siempre un valor distinto)
+        localStorage.setItem('logout', Date.now());
+
+        // Enviar el form de Laravel para invalidar la sesión en el servidor
+        document.getElementById('logout-form').submit();
+
+        // Limpieza opcional
+        setTimeout(() => localStorage.removeItem('logout'), 500);
+    }
+
+    /**
+     * Vigilante en cada pestaña
+     * Si detecta la marca "logout" redirige al login inmediatamente
+     */
+    window.addEventListener('storage', function (event) {
+        if (event.key === 'logout') {
+            window.location.href = "{{ route('login') }}";
+        }
+    });
+</script>
+
 </body>
 </html>
