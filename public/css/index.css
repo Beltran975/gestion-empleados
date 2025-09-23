@@ -28,6 +28,7 @@ header {
     padding-top: 40px;
 }
 .logo {
+    display: flex; 
     padding-left: 20px;
     align-items: center;
     gap: 15px;
@@ -241,7 +242,8 @@ main {
     }
 
     .logo h1 {
-        font-size: 1.3rem; /* Título un poco más pequeño */
+        font-size: 1.2rem; /* Título un poco más pequeño */
+        align-items: center;
     }
 
     .logout-link {
@@ -316,7 +318,7 @@ main {
     .employee-row > div:nth-child(3)::before { content: 'CURP:'; }
     .employee-row > div:nth-child(4)::before { content: 'Domicilio:'; }
     .employee-row > div:nth-child(5)::before { content: 'Teléfono:'; } 
-    .employee-row > div:nth-child(5)::before { content: 'Salario:'; }
+    .employee-row > div:nth-child(6)::before { content: 'Salario:'; }
 
 
     /* --- Estilos para los nuevos botones de acción --- */
