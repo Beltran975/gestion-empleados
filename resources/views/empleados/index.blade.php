@@ -46,9 +46,8 @@
                     <div>Fecha de nacimiento</div>
                     <div>CURP</div>
                     <div>Domicilio</div>
-                    <div>Salario</div>
-                    <div>Acciones</div>
-                </div>
+                    <div>Teléfono</div> <div>Salario</div>
+                    </div>
 
                 @forelse($empleados as $empleado)
                     <div class="employee-row">
@@ -56,20 +55,10 @@
                         <div>{{ $empleado->fecha_nacimiento }}</div>
                         <div>{{ $empleado->curp }}</div>
                         <div>{{ $empleado->domicilio }}</div>
-                        <div>${{ number_format($empleado->salario, 2) }} MXN</div>
-                        <div class="actions">
-                            <a href="#" class="action-btn-edit" data-modal-target="#modal-edit-{{ $empleado->id_empleado }}">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
-                            <a href="#" class="action-btn-delete" data-modal-target="#modal-delete-{{ $empleado->id_empleado }}">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
+                        <div>{{ $empleado->telefono }}</div> <div>${{ number_format($empleado->salario, 2) }} MXN</div>
                         </div>
-                    </div>
                     
-                    @include('empleados.edit', ['empleado' => $empleado])
-                    @include('empleados.delete', ['empleado' => $empleado])
-                @empty
+                    @empty
                     <div class="empty-message">
                         Actualmente no cuentas con ningún registro
                     </div>
