@@ -27,6 +27,7 @@ class EmpleadoController extends Controller
             'curp' => 'required|string|max:18',
             'domicilio' => 'required|string|max:255',
             'salario' => 'required|numeric|min:0',
+            'telefono' => 'required|string|max:15', // nuevo campo
         ]);
 
         $empleado = Empleado::create($request->all());
@@ -39,44 +40,4 @@ class EmpleadoController extends Controller
 
         return redirect()->route('empleados.index')->with('success', 'Empleado creado correctamente.');
     }
-
-    public function edit(Empleado $empleado)
-    {
-        return view('empleados.edit', compact('empleado'));
-    }
-
-    public function update(Request $request, Empleado $empleado)
-    {
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'fecha_nacimiento' => 'required|date|before:today',
-            'curp' => 'required|string|max:18',
-            'domicilio' => 'required|string|max:255',
-            'salario' => 'required|numeric|min:0',
-        ]);
-
-        $empleado->update($request->all());
-
-        Log::create([
-            'id_usuario' => session('usuario_id'),
-            'accion' => 'editar',
-            'tabla_afectada' => 'empleados',
-        ]);
-
-        return redirect()->route('empleados.index')->with('success', 'Empleado actualizado correctamente.');
-    }
-
-    public function destroy(Empleado $empleado)
-    {
-        $empleado->delete();
-
-        Log::create([
-            'id_usuario' => session('usuario_id'),
-            'accion' => 'eliminar',
-            'tabla_afectada' => 'empleados',
-        ]);
-
-        return redirect()->route('empleados.index')->with('success', 'Empleado eliminado correctamente.');
-    }
-
 }

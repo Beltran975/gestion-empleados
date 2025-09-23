@@ -18,6 +18,6 @@ class Empleado extends Model
         'curp',
         'domicilio',
         'salario',
-        'estado',
+        'telefono', // nuevo campo
     ];
 }

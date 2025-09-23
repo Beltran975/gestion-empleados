@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-
     public function up(): void
     {
         Schema::create('empleados', function (Blueprint $table) {
@@ -16,7 +15,7 @@ return new class extends Migration
             $table->string('curp', 18)->unique();      
             $table->string('domicilio');              
             $table->decimal('salario', 10, 2);         
-            $table->enum('estado', ['activo', 'inactivo'])->default('activo'); 
+            $table->string('telefono', 15); 
             $table->timestamps();
         });
     }
