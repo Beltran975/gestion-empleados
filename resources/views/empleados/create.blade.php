@@ -24,17 +24,18 @@
             <div class="form-group">
                 <label>CURP</label>
                 <input type="text" name="curp" value="{{ old('curp') }}" maxlength="18" required>
+                @error('curp')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <div class="form-group">
                 <label>Domicilio</label>
                 <input type="text" name="domicilio" value="{{ old('domicilio') }}" required>
             </div>
-
             <div class="form-group">
                 <label>Teléfono</label>
                 <input type="tel" name="telefono" value="{{ old('telefono') }}" required>
             </div>
-            
             <div class="form-group">
                 <label>Salario</label>
                 <input type="number" step="0.01" name="salario" value="{{ old('salario') }}" required>
